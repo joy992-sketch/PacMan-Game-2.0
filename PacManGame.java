@@ -81,28 +81,17 @@ public class PacManGame extends JFrame {
     // MAP: 1 wall, 0 food, 2 power pellet, 3 empty, 4 ghost house
     // ------------------------------------------------------------------
     static final int[][] GOOGLE_PACMAN_MAP = {
-            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-                    1, 1, 1 },
-            { 1, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0,
-                    0, 2, 1 },
-            { 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1,
-                    1, 0, 1 },
-            { 1, 0, 1, 3, 1, 0, 1, 0, 1, 3, 1, 0, 1, 0, 1, 3, 1, 0, 1, 1, 0, 1, 3, 1, 0, 1, 0, 1, 3, 1, 0, 1, 0, 1, 3,
-                    1, 0, 1 },
-            { 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1,
-                    1, 0, 1 },
-            { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 1 },
-            { 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 4, 4, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,
-                    1, 0, 1 },
-            { 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 4, 4, 4, 4, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0,
-                    0, 0, 1 },
-            { 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0,
-                    1, 1, 1 },
-            { 1, 2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
-                    0, 2, 1 },
-            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-                    1, 1, 1 }
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+            { 1, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 2, 1 },
+            { 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1 },
+            { 1, 0, 1, 3, 1, 0, 1, 0, 1, 3, 1, 0, 1, 0, 1, 3, 1, 0, 1, 1, 0, 1, 3, 1, 0, 1, 0, 1, 3, 1, 0, 1, 0, 1, 3, 1, 0, 1 },
+            { 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1 },
+            { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+            { 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 4, 4, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1 },
+            { 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 4, 4, 4, 4, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1 },
+            { 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1 },
+            { 1, 2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 2, 1 },
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
     };
     static final int TILE_SIZE = 20;
     static final int SPRITE_SIZE = 16;
@@ -499,8 +488,8 @@ public class PacManGame extends JFrame {
         if (fontsLoaded)
             return;
         fontsLoaded = true;
-        pixelBase = readFont("PressStart2P-Regular.ttf");
-        vtBase = readFont("VT323-Regular.ttf");
+        pixelBase = null; // use the old fallback font
+        vtBase = null;
     }
 
     /** Press Start 2P (font-pixel) */
@@ -899,7 +888,19 @@ public class PacManGame extends JFrame {
     }
 
     /** Big "PAC-MAN" title with pink glow. */
+    /** Big "PAC-MAN" title made of pixel blocks with pink glow. */
     static class TitlePanel extends JPanel {
+        // 5x7 block letters ('X' = filled block)
+        static final Map<Character, String[]> GLYPHS = new HashMap<>();
+        static {
+            GLYPHS.put('P', new String[] { "XXXX.", "X...X", "X...X", "XXXX.", "X....", "X....", "X...." });
+            GLYPHS.put('A', new String[] { ".XXX.", "X...X", "X...X", "XXXXX", "X...X", "X...X", "X...X" });
+            GLYPHS.put('C', new String[] { ".XXX.", "X...X", "X....", "X....", "X....", "X...X", ".XXX." });
+            GLYPHS.put('-', new String[] { ".....", ".....", ".....", "XXXXX", ".....", ".....", "....." });
+            GLYPHS.put('M', new String[] { "X...X", "XX.XX", "X.X.X", "X...X", "X...X", "X...X", "X...X" });
+            GLYPHS.put('N', new String[] { "X...X", "XX..X", "X.X.X", "X..XX", "X...X", "X...X", "X...X" });
+        }
+
         TitlePanel() {
             setOpaque(false);
             setPreferredSize(new Dimension(700, 130));
@@ -909,19 +910,30 @@ public class PacManGame extends JFrame {
         protected void paintComponent(Graphics g0) {
             Graphics2D g = aa(g0);
             String title = "PAC-MAN";
-            g.setFont(pixel(72f));
-            FontMetrics fm = g.getFontMetrics();
-            int x = (getWidth() - fm.stringWidth(title)) / 2;
-            int y = 82;
-            for (int r = 12; r >= 3; r -= 3) {
-                g.setColor(new Color(255, 0, 85, 26));
-                for (int a = 0; a < 360; a += 30) {
-                    g.drawString(title, (int) (x + r * Math.cos(Math.toRadians(a))),
-                            (int) (y + r * Math.sin(Math.toRadians(a))));
-                }
+
+            int cw = 13, ch = 9, gap = 1; // block width, block height, blocks between letters
+            int cols = title.length() * 5 + (title.length() - 1) * gap;
+            int x0 = (getWidth() - cols * cw) / 2;
+            int y0 = 22;
+
+            Path2D.Double blocks = new Path2D.Double();
+            int col = 0;
+            for (char c : title.toCharArray()) {
+                String[] rows = GLYPHS.get(c);
+                for (int r = 0; r < 7; r++)
+                    for (int k = 0; k < 5; k++)
+                        if (rows[r].charAt(k) == 'X')
+                            blocks.append(new Rectangle2D.Double(x0 + (col + k) * cw, y0 + r * ch, cw, ch), false);
+                col += 5 + gap;
             }
+
+            glow(g, blocks, new Color(255, 0, 85), 10, 120); // pink glow
+            g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
             g.setColor(YELLOW400);
-            g.drawString(title, x, y);
+            g.fill(blocks);
+            g.setStroke(new BasicStroke(4f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER));
+            g.draw(blocks); // thickens every letter
+            g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
             Map<TextAttribute, Object> attrs = new HashMap<>();
             attrs.put(TextAttribute.TRACKING, 0.15f);
@@ -962,7 +974,12 @@ public class PacManGame extends JFrame {
             setOpaque(false);
             setLayout(null);
             setPreferredSize(new Dimension(CANVAS_W + 2 * CANVAS_PAD + 16, CANVAS_H + 2 * CANVAS_PAD + 16));
-            overlayBtn = new ArcadeButton("CONTINUE", ICON_NONE, PURPLE900, PURPLE400, Color.WHITE, 12f, false, 8);
+            overlayBtn = new ArcadeButton("CONTINUE", ICON_NONE, PURPLE900, PURPLE400, Color.WHITE, 12f, false, 8) {
+                @Override
+                public void setBounds(int x, int y, int w, int h) {
+                    super.setBounds(x, y, 170, 54); // always keep the button small
+                }
+            };
             overlayBtn.setSize(170, 54);
             overlayBtn.setVisible(false);
             overlayBtn.addActionListener(e -> {
@@ -984,17 +1001,28 @@ public class PacManGame extends JFrame {
 
         @Override
         public void doLayout() {
-            overlayBtn.setLocation((getWidth() - overlayBtn.getWidth()) / 2, getHeight() / 2 + 28);
+            // fixed size, centered under the "GAME OVER" text
+            overlayBtn.setBounds((getWidth() - 170) / 2, getHeight() / 2 + 28, 170, 54);
         }
 
-        RoundRectangle2D frame() {
-            return new RoundRectangle2D.Double(10, 10, getWidth() - 21, getHeight() - 21, 16, 16);
+        /** How much the maze is scaled up to fit the panel. */
+        double scale() {
+            double sw = (getWidth() - 2.0 * (8 + CANVAS_PAD)) / CANVAS_W;
+            double sh = (getHeight() - 2.0 * (8 + CANVAS_PAD)) / CANVAS_H;
+            return Math.max(0.3, Math.min(sw, sh));
         }
 
         @Override
         protected void paintComponent(Graphics g0) {
+            double s = scale();
+            int pw = (int) Math.round(CANVAS_W * s + 2 * (8 + CANVAS_PAD));
+            int ph = (int) Math.round(CANVAS_H * s + 2 * (8 + CANVAS_PAD));
+            int ox = (getWidth() - pw) / 2, oy = (getHeight() - ph) / 2;
+
             Graphics2D g = aa(g0);
-            RoundRectangle2D r = frame();
+            g.translate(ox, oy); // center the neon box in the panel
+
+            RoundRectangle2D r = new RoundRectangle2D.Double(10, 10, pw - 21, ph - 21, 16, 16);
             glow(g, r, new Color(0, 102, 255), 7, 80);
             g.setColor(Color.BLACK);
             g.fill(r);
@@ -1003,16 +1031,17 @@ public class PacManGame extends JFrame {
             g.draw(r);
 
             Graphics2D gg = (Graphics2D) g.create();
-            gg.setClip(new RoundRectangle2D.Double(14, 14, getWidth() - 29, getHeight() - 29, 12, 12));
+            gg.setClip(new RoundRectangle2D.Double(14, 14, pw - 29, ph - 29, 12, 12));
             gg.translate(8 + CANVAS_PAD, 8 + CANVAS_PAD);
-            gg.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
+            gg.scale(s, s);
+            gg.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
             drawGame(gg);
             gg.dispose();
 
             if (overlayVisible) {
                 g.setColor(new Color(0, 0, 0, 205));
-                g.fill(new RoundRectangle2D.Double(14, 14, getWidth() - 29, getHeight() - 29, 12, 12));
-                int cx = getWidth() / 2, cy = getHeight() / 2;
+                g.fill(new RoundRectangle2D.Double(14, 14, pw - 29, ph - 29, 12, 12));
+                int cx = pw / 2, cy = ph / 2;
                 g.setFont(pixel(36f));
                 for (int rr = 8; rr >= 2; rr -= 3) {
                     g.setColor(new Color(255, 0, 85, 28));
@@ -1125,8 +1154,9 @@ public class PacManGame extends JFrame {
         root.add(buildFooter(), BorderLayout.SOUTH);
 
         add(root);
-        setResizable(false);
+        setResizable(true);
         pack();
+        setMinimumSize(getSize()); // can grow, but can't shrink below the original size
         setLocationRelativeTo(null);
 
         setGlassPane(scanlines());
@@ -1566,7 +1596,7 @@ public class PacManGame extends JFrame {
         p.add(cardsRow);
         p.add(Box.createVerticalStrut(14));
 
-        JLabel proj = label("2-2 GAME PROJECT \u2022 PAC-MAN RETRO RECREATION", vt(22f), SLATE400);
+        JLabel proj = label("2-2 GAME PROJECT \u2022 PAC-MAN CLASSIC GAME", vt(22f), SLATE400);
         proj.setAlignmentX(CENTER_ALIGNMENT);
         p.add(proj);
         p.add(Box.createVerticalStrut(14));
