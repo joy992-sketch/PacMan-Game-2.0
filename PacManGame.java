@@ -184,7 +184,7 @@ public class PacManGame extends JFrame {
     // ----------------
     // Map 1 = MAP_1, Map 2 = your original GOOGLE_PACMAN_MAP, Map 3 = MAP_3
     static final int[][][] MAPS = { MAP_1, GOOGLE_PACMAN_MAP, MAP_3 };
-    static final String[] MAP_NAMES = { "NEON ARCADE", "GOOGLE DOODLE", "ZIGZAG HALLS" };
+    static final String[] MAP_NAMES = { "NEON ARCADE", "CSE - 4", "ZIGZAG HALLS" };
     static final int[] MAP_TILE = { 20, 18, 18 };
     static final int[] MAP_SPRITE = { 16, 15, 15 };
     static final int[][] PAC_SPAWN = { { 18, 13 }, { 18, 9 }, { 18, 9 } }; // {col,row}
@@ -1059,7 +1059,7 @@ public class PacManGame extends JFrame {
             attrs.put(TextAttribute.TRACKING, 0.15f);
             g.setFont(vt(24f).deriveFont(attrs));
             g.setColor(CYAN400);
-            drawCentered(g, "GOOGLE DOODLE EDITION", getWidth() / 2, 118);
+            drawCentered(g, "BUP CSE - 4 EDITION", getWidth() / 2, 118);
             g.dispose();
         }
     }
@@ -1319,7 +1319,7 @@ public class PacManGame extends JFrame {
         JPanel right = new JPanel(new FlowLayout(FlowLayout.RIGHT, 16, 0));
         right.setOpaque(false);
         right.add(new MuteButton());
-        right.add(label("ARCADE MACHINE V2.5", vt(22f), PURPLE400));
+        right.add(label("PAC-MAN V3.0", vt(22f), PURPLE400));
         header.add(right, BorderLayout.EAST);
         return header;
     }
@@ -1330,7 +1330,7 @@ public class PacManGame extends JFrame {
         footer.setBorder(new CompoundBorder(new EmptyBorder(16, 0, 0, 0),
                 new CompoundBorder(new MatteBorder(1, 0, 0, 0, new Color(0x58, 0x1C, 0x87, 102)),
                         new EmptyBorder(10, 0, 0, 0))));
-        JLabel l = label("\u00A9 2026 CLASSIC ARCADE \u2022 GOOGLE PAC-MAN STYLE MAZE", pixel(10f), SLATE500);
+        JLabel l = label("\u00A9 2026 CLASSIC ARCADE \u2022 CSE - 4 PAC-MAN STYLE MAZE", pixel(10f), SLATE500);
         l.setHorizontalAlignment(SwingConstants.CENTER);
         footer.add(l, BorderLayout.CENTER);
         return footer;
@@ -1786,12 +1786,12 @@ public class PacManGame extends JFrame {
             g2.setColor(accent);
             g2.setStroke(new BasicStroke(3f));
             g2.drawOval(x, y, SIZE, SIZE);
-
-            g2.setFont(pixel(9f));
+            //Dev Name
+            g2.setFont(pixel(12f));
             FontMetrics fm = g2.getFontMetrics();
             g2.setColor(accent);
-            g2.drawString(name, (w - fm.stringWidth(name)) / 2, y + SIZE + 32);
-
+            g2.drawString(name, (w - fm.stringWidth(name)) / 2, y + SIZE + 26);
+            //Dev Role
             g2.setFont(vt(20f));
             fm = g2.getFontMetrics();
             g2.setColor(Color.WHITE);
