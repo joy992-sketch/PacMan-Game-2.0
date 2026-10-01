@@ -80,6 +80,7 @@ public class PacManGame extends JFrame {
     // ------------------------------------------------------------------
     // MAP: 1 wall, 0 food, 2 power pellet, 3 empty, 4 ghost house
     // ------------------------------------------------------------------
+
     static final int[][] GOOGLE_PACMAN_MAP = {
 
             { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -110,12 +111,111 @@ public class PacManGame extends JFrame {
                     1, 1, 1, 1, 1, 1, 1 }
 
     };
-    static final int TILE_SIZE = 18;
-    static final int SPRITE_SIZE = 15;
-    static final int COLS = GOOGLE_PACMAN_MAP[0].length;
-    static final int ROWS = GOOGLE_PACMAN_MAP.length;
-    static final int CANVAS_W = 760, CANVAS_H = 280;
-    static final int CANVAS_PAD = 12; // 4px border + 8px padding (same as the HTML wrapper)
+
+    // static final int TILE_SIZE = 18;
+    // static final int SPRITE_SIZE = 15;
+    // static final int COLS = GOOGLE_PACMAN_MAP[0].length;
+    // static final int ROWS = GOOGLE_PACMAN_MAP.length;
+    // static final int CANVAS_W = 760, CANVAS_H = 280;
+    // static final int CANVAS_PAD = 12; // 4px border + 8px padding (same as the
+    // HTML wrapper)
+    // ---------------- MAP 1 (your new map, 38 x 15) ----------------
+    static final int[][] MAP_1 = {
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                    1, 1, 1 },
+            { 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 2, 1 },
+            { 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1,
+                    0, 0, 1 },
+            { 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0,
+                    0, 0, 1 },
+            { 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1,
+                    1, 0, 1 },
+            { 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+                    1, 0, 1 },
+            { 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0,
+                    1, 0, 1 },
+            { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 1 },
+            { 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 4, 4, 4, 4, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1,
+                    0, 0, 1 },
+            { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 1 },
+            { 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1,
+                    1, 0, 1 },
+            { 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1,
+                    0, 0, 1 },
+            { 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1,
+                    0, 0, 1 },
+            { 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 2, 1 },
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                    1, 1, 1 }
+    };
+
+    // ---------------- MAP 3 (text map: # wall, . food, o power, space empty)
+    // ----------------
+    static int[][] parseMap(String[] rows) {
+        int[][] m = new int[rows.length][rows[0].length()];
+        for (int r = 0; r < rows.length; r++)
+            for (int c = 0; c < rows[r].length(); c++) {
+                char ch = rows[r].charAt(c);
+                m[r][c] = ch == '#' ? 1 : ch == '.' ? 0 : ch == 'o' ? 2 : 3;
+            }
+        return m;
+    }
+
+    static final int[][] MAP_3 = parseMap(new String[] {
+            "##########################################",
+            "#o......................................o#",
+            "#.######.###########..###########.######.#",
+            "#........................................#",
+            "#.#.##########.############.##########.#.#",
+            "#........................................#",
+            "#.######.###########..###########.######.#",
+            "#........................................#",
+            "#.#.##########.############.##########.#.#",
+            "#........................................#",
+            "#.######.###########..###########.######.#",
+            "#o......................................o#",
+            "##########################################" });
+
+    // ---------------- map list + per-map settings (same order everywhere)
+    // ----------------
+    // Map 1 = MAP_1, Map 2 = your original GOOGLE_PACMAN_MAP, Map 3 = MAP_3
+    static final int[][][] MAPS = { MAP_1, GOOGLE_PACMAN_MAP, MAP_3 };
+    static final String[] MAP_NAMES = { "NEON ARCADE", "GOOGLE DOODLE", "ZIGZAG HALLS" };
+    static final int[] MAP_TILE = { 20, 18, 18 };
+    static final int[] MAP_SPRITE = { 16, 15, 15 };
+    static final int[][] PAC_SPAWN = { { 18, 13 }, { 18, 9 }, { 18, 9 } }; // {col,row}
+    static final int[][][] GHOST_SPAWN = {
+            { { 15, 7 }, { 16, 7 }, { 17, 7 }, { 18, 7 } },
+            { { 16, 5 }, { 17, 5 }, { 18, 5 }, { 19, 5 } },
+            { { 16, 5 }, { 17, 5 }, { 18, 5 }, { 19, 5 } } };
+    static int selectedMap = 0;
+
+    // these change with the selected map
+    static int TILE_SIZE = 20;
+    static int SPRITE_SIZE = 16;
+    static int COLS = 38, ROWS = 15;
+    static final int CANVAS_W = 760, CANVAS_H = 300; // only the panel's preferred size
+    static final int CANVAS_PAD = 12;
+
+    static int mapW() {
+        return COLS * TILE_SIZE;
+    }
+
+    static int mapH() {
+        return ROWS * TILE_SIZE;
+    }
+
+    static void applyMap(int idx) {
+        selectedMap = idx;
+        TILE_SIZE = MAP_TILE[idx];
+        SPRITE_SIZE = MAP_SPRITE[idx];
+        ROWS = MAPS[idx].length;
+        COLS = MAPS[idx][0].length;
+    }
 
     // ------------------------------------------------------------------
     // GAME STATE
@@ -144,9 +244,10 @@ public class PacManGame extends JFrame {
     static BufferedImage[] devPhotos = new BufferedImage[3];
 
     static int[][] copyMap() {
-        int[][] m = new int[GOOGLE_PACMAN_MAP.length][];
+        int[][] src = MAPS[selectedMap];
+        int[][] m = new int[src.length][];
         for (int i = 0; i < m.length; i++)
-            m[i] = GOOGLE_PACMAN_MAP[i].clone();
+            m[i] = src[i].clone();
         return m;
     }
 
@@ -154,16 +255,16 @@ public class PacManGame extends JFrame {
     // PAC-MAN
     // ------------------------------------------------------------------
     static class Pac {
-        double x = 18 * TILE_SIZE + TILE_SIZE / 2.0;
-        double y = 9 * TILE_SIZE + TILE_SIZE / 2.0;
-        final double radius = TILE_SIZE / 2.0 - 2;
+        double x, y;
+        double radius = TILE_SIZE / 2.0 - 2;
         final double speed = 2;
         int dirX = 0, dirY = 0, nextDirX = 0, nextDirY = 0;
         String facing = "right";
 
         void reset() {
-            x = 18 * TILE_SIZE + TILE_SIZE / 2.0;
-            y = 9 * TILE_SIZE + TILE_SIZE / 2.0;
+            x = PAC_SPAWN[selectedMap][0] * TILE_SIZE + TILE_SIZE / 2.0;
+            y = PAC_SPAWN[selectedMap][1] * TILE_SIZE + TILE_SIZE / 2.0;
+            radius = TILE_SIZE / 2.0 - 2;
             dirX = dirY = nextDirX = nextDirY = 0;
             facing = "right";
         }
@@ -392,6 +493,7 @@ public class PacManGame extends JFrame {
     }
 
     static void startNewGame() {
+        applyMap(selectedMap);
         currentMap = copyMap();
         score = 0;
         lives = 3;
@@ -401,10 +503,11 @@ public class PacManGame extends JFrame {
         frightenTimer = 0;
         pacman.reset();
         ghosts = new ArrayList<>();
-        ghosts.add(new Ghost(imgRed, new Color(0xFF0000), 17, 5)); // Blinky
-        ghosts.add(new Ghost(imgPink, new Color(0xFFB8FF), 18, 5)); // Pinky
-        ghosts.add(new Ghost(imgBlue, new Color(0x00FFFF), 19, 5)); // Inky
-        ghosts.add(new Ghost(imgOrange, new Color(0xFFB852), 20, 5)); // Clyde
+        int[][] gs = GHOST_SPAWN[selectedMap];
+        ghosts.add(new Ghost(imgRed, new Color(0xFF0000), gs[0][0], gs[0][1]));
+        ghosts.add(new Ghost(imgPink, new Color(0xFFB8FF), gs[1][0], gs[1][1]));
+        ghosts.add(new Ghost(imgBlue, new Color(0x00FFFF), gs[2][0], gs[2][1]));
+        ghosts.add(new Ghost(imgOrange, new Color(0xFFB852), gs[3][0], gs[3][1]));
         hideOverlay();
     }
 
@@ -1024,16 +1127,16 @@ public class PacManGame extends JFrame {
 
         /** How much the maze is scaled up to fit the panel. */
         double scale() {
-            double sw = (getWidth() - 2.0 * (8 + CANVAS_PAD)) / CANVAS_W;
-            double sh = (getHeight() - 2.0 * (8 + CANVAS_PAD)) / CANVAS_H;
+            double sw = (getWidth() - 2.0 * (8 + CANVAS_PAD)) / mapW();
+            double sh = (getHeight() - 2.0 * (8 + CANVAS_PAD)) / mapH();
             return Math.max(0.3, Math.min(sw, sh));
         }
 
         @Override
         protected void paintComponent(Graphics g0) {
             double s = scale();
-            int pw = (int) Math.round(CANVAS_W * s + 2 * (8 + CANVAS_PAD));
-            int ph = (int) Math.round(CANVAS_H * s + 2 * (8 + CANVAS_PAD));
+            int pw = (int) Math.round(mapW() * s + 2 * (8 + CANVAS_PAD));
+            int ph = (int) Math.round(mapH() * s + 2 * (8 + CANVAS_PAD));
             int ox = (getWidth() - pw) / 2, oy = (getHeight() - ph) / 2;
 
             Graphics2D g = aa(g0);
@@ -1148,6 +1251,7 @@ public class PacManGame extends JFrame {
     final JLabel highScoreLabel = label("000000", pixel(14f), Color.WHITE);
     final JLabel scoreLabel = label("0", pixel(14f), Color.WHITE);
     final LivesPanel livesPanel = new LivesPanel();
+    final JLabel mapCaption = label("MAP 1: NEON ARCADE", vt(20f), SLATE400);
     javax.swing.Timer loop;
 
     public PacManGame() {
@@ -1167,6 +1271,7 @@ public class PacManGame extends JFrame {
         center.setOpaque(false);
         center.add(buildMenu(), "menu");
         center.add(buildGameScreen(), "game");
+        center.add(buildMapSelect(), "maps"); // <-- NEW (must stay after "game")
         root.add(center, BorderLayout.CENTER);
         root.add(buildFooter(), BorderLayout.SOUTH);
 
@@ -1255,10 +1360,7 @@ public class PacManGame extends JFrame {
         ArcadeButton how = menuButton("> HOW TO PLAY", ICON_GAMEPAD);
         ArcadeButton about = menuButton("> ABOUT US", ICON_USERS);
         ArcadeButton exit = menuButton("> EXIT", ICON_POWER);
-        start.addActionListener(e -> {
-            cards.show(center, "game");
-            startNewGame();
-        });
+        start.addActionListener(e -> cards.show(center, "maps"));
         how.addActionListener(e -> showHowToPlay());
         about.addActionListener(e -> showAboutUs());
         exit.addActionListener(e -> showExit());
@@ -1311,7 +1413,7 @@ public class PacManGame extends JFrame {
         top.add(livesBox, BorderLayout.EAST);
         screen.add(top, BorderLayout.NORTH);
 
-        //Map - 1
+        // Map - 1
 
         // canvasPanel = new CanvasPanel();
         // JPanel holder = new JPanel(new GridBagLayout());
@@ -1319,7 +1421,7 @@ public class PacManGame extends JFrame {
         // holder.add(canvasPanel);
         // screen.add(holder, BorderLayout.CENTER);
 
-        //Map - 2
+        // Map - 2
         canvasPanel = new CanvasPanel();
         screen.add(canvasPanel, BorderLayout.CENTER);
 
@@ -1334,12 +1436,47 @@ public class PacManGame extends JFrame {
         ArcadeButton pause = smallButton("PAUSE");
         pause.addActionListener(e -> togglePause("PRESS PAUSE TO RESUME"));
         bottom.add(back, BorderLayout.WEST);
-        JLabel cap = label("PAC-MAN MAZE: GOOGLE DOODLE THEME", vt(20f), SLATE400);
-        cap.setHorizontalAlignment(SwingConstants.CENTER);
-        bottom.add(cap, BorderLayout.CENTER);
+        mapCaption.setHorizontalAlignment(SwingConstants.CENTER);
+        bottom.add(mapCaption, BorderLayout.CENTER);
         bottom.add(pause, BorderLayout.EAST);
         screen.add(bottom, BorderLayout.SOUTH);
         return screen;
+    }
+
+    JComponent buildMapSelect() {
+        JPanel p = new JPanel();
+        p.setOpaque(false);
+        p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
+        p.add(Box.createVerticalGlue());
+
+        JLabel title = label("CHOOSE YOUR MAP", pixel(22f), YELLOW400);
+        title.setAlignmentX(CENTER_ALIGNMENT);
+        p.add(title);
+        p.add(Box.createVerticalStrut(14));
+
+        for (int i = 0; i < MAPS.length; i++) {
+            final int idx = i;
+            MapCard card = new MapCard(i);
+            card.setAlignmentX(CENTER_ALIGNMENT);
+            card.setMaximumSize(new Dimension(640, 110));
+            card.addActionListener(e -> {
+                selectedMap = idx;
+                mapCaption.setText("MAP " + (idx + 1) + ": " + MAP_NAMES[idx]);
+                cards.show(center, "game");
+                startNewGame();
+            });
+            p.add(card);
+            p.add(Box.createVerticalStrut(6));
+        }
+
+        p.add(Box.createVerticalStrut(8));
+        ArcadeButton back = smallButton("< BACK");
+        back.setAlignmentX(CENTER_ALIGNMENT);
+        back.setMaximumSize(new Dimension(130, 44));
+        back.addActionListener(e -> cards.show(center, "menu"));
+        p.add(back);
+        p.add(Box.createVerticalGlue());
+        return p;
     }
 
     ArcadeButton smallButton(String text) {
@@ -1401,6 +1538,83 @@ public class PacManGame extends JFrame {
             g.setColor(border);
             g.setStroke(new BasicStroke(2f));
             g.draw(r);
+            g.dispose();
+        }
+    }
+
+    /** One clickable map choice: mini-preview + name. */
+    static class MapCard extends JButton {
+        final int index;
+        boolean hover = false;
+
+        MapCard(int index) {
+            this.index = index;
+            setFocusable(false);
+            setContentAreaFilled(false);
+            setBorderPainted(false);
+            setOpaque(false);
+            setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            setPreferredSize(new Dimension(640, 110));
+            addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    hover = true;
+                    repaint();
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    hover = false;
+                    repaint();
+                }
+            });
+        }
+
+        @Override
+        protected void paintComponent(Graphics g0) {
+            Graphics2D g = aa(g0);
+            int m = 6;
+            RoundRectangle2D r = new RoundRectangle2D.Double(m, m, getWidth() - 2 * m - 1, getHeight() - 2 * m - 1, 12,
+                    12);
+            if (hover)
+                glow(g, r, PINK, 6, 90);
+            g.setColor(hover ? PURPLE900 : MENU_BTN_BG);
+            g.fill(r);
+            g.setColor(hover ? PINK : PURPLE400);
+            g.setStroke(new BasicStroke(2f));
+            g.draw(r);
+
+            // mini preview of this map
+            int[][] map = MAPS[index];
+            int cols = map[0].length, rows = map.length;
+            double ts = Math.min(300.0 / cols, 88.0 / rows);
+            int pw = (int) Math.round(ts * cols), ph = (int) Math.round(ts * rows);
+            int px = m + 14 + (300 - pw) / 2, py = (getHeight() - ph) / 2;
+            g.setColor(Color.BLACK);
+            g.fillRect(px - 3, py - 3, pw + 6, ph + 6);
+            for (int rr = 0; rr < rows; rr++)
+                for (int cc = 0; cc < cols; cc++) {
+                    double x = px + cc * ts, y = py + rr * ts;
+                    int t = map[rr][cc];
+                    if (t == 1) {
+                        g.setColor(BLUE600);
+                        g.fill(new Rectangle2D.Double(x, y, ts, ts));
+                    } else if (t == 0) {
+                        g.setColor(new Color(0xFFB8AE));
+                        g.fill(new Ellipse2D.Double(x + ts * 0.35, y + ts * 0.35, ts * 0.3, ts * 0.3));
+                    } else if (t == 2) {
+                        g.setColor(YELLOW400);
+                        g.fill(new Ellipse2D.Double(x + ts * 0.1, y + ts * 0.1, ts * 0.8, ts * 0.8));
+                    }
+                }
+
+            int tx = m + 14 + 300 + 28;
+            g.setFont(pixel(16f));
+            g.setColor(hover ? Color.WHITE : YELLOW400);
+            g.drawString("MAP - " + (index + 1), tx, getHeight() / 2 - 4);
+            g.setFont(vt(22f));
+            g.setColor(hover ? Color.WHITE : CYAN300);
+            g.drawString(MAP_NAMES[index], tx, getHeight() / 2 + 22);
             g.dispose();
         }
     }
