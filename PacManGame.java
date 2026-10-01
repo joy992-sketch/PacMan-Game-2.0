@@ -1255,8 +1255,11 @@ public class PacManGame extends JFrame {
     javax.swing.Timer loop;
 
     public PacManGame() {
-        super("Pac-Man Arcade Edition");
+        super("Pac-Man Classic");
         loadAssets();
+        BufferedImage appIcon = loadImage("icon1.png"); // <- add this line
+        if (appIcon != null)
+            setIconImage(appIcon); // <- add this line
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         getContentPane().setBackground(BG);
         setLayout(new GridBagLayout());
@@ -1786,12 +1789,12 @@ public class PacManGame extends JFrame {
             g2.setColor(accent);
             g2.setStroke(new BasicStroke(3f));
             g2.drawOval(x, y, SIZE, SIZE);
-            //Dev Name
+            // Dev Name
             g2.setFont(pixel(12f));
             FontMetrics fm = g2.getFontMetrics();
             g2.setColor(accent);
             g2.drawString(name, (w - fm.stringWidth(name)) / 2, y + SIZE + 26);
-            //Dev Role
+            // Dev Role
             g2.setFont(vt(20f));
             fm = g2.getFontMetrics();
             g2.setColor(Color.WHITE);
