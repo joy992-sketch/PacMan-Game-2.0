@@ -81,6 +81,7 @@ public class PacManGame extends JFrame {
     // MAP: 1 wall, 0 food, 2 power pellet, 3 empty, 4 ghost house
     // ------------------------------------------------------------------
     static final int[][] GOOGLE_PACMAN_MAP = {
+
             { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
             { 1, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 2, 1 },
             { 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1 },
@@ -92,6 +93,7 @@ public class PacManGame extends JFrame {
             { 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1 },
             { 1, 2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 2, 1 },
             { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
+            
     };
     static final int TILE_SIZE = 20;
     static final int SPRITE_SIZE = 16;
@@ -1154,7 +1156,7 @@ public class PacManGame extends JFrame {
         root.add(buildFooter(), BorderLayout.SOUTH);
 
         add(root);
-        setResizable(true);
+        setResizable(false);
         pack();
         setMinimumSize(getSize()); // can grow, but can't shrink below the original size
         setLocationRelativeTo(null);
